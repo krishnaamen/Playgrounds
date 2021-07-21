@@ -1,5 +1,6 @@
 
 import UIKit
+import Foundation
 
 
 // MARK: Day 1 19/07/2021 String,Int,Arrays
@@ -158,3 +159,111 @@ let krishnaHouseNumber = complexDict["Krishna"]?["HomeNumber"] ?? 0
 let shuvasAge = complexDict["Shuva"]?["Age"] ?? 30
 print("Krishna's House number is \(krishnaHouseNumber)")
 print("Shuva's age is \(shuvasAge)")
+
+// MARK: Day 3 21/07/2021 Extension,Enum,function,switch etc.
+// Extension
+extension Int{
+    var add: Int {return self + 200}
+    var multiply: Int{return self * 2}
+}
+var v1: Int = 20
+var v2: Int = 200
+print(v1.add)
+print(v2.multiply)
+
+extension String{
+    var upp: String{self.uppercased()}
+    var low: String{self.lowercased()}
+}
+var st1: String = "RamChandraPathak"
+var st2: String = "GitaKumariPathak"
+print(st1.upp)
+print(st2.low)
+
+
+// Functions
+
+func getFullName(fname: String,lname: String) -> String{
+    return fname + " " + lname
+}
+print (getFullName(fname: "Krishna", lname: "Khanal"))
+
+func getFullName1(_ fname: String,lname: String)->String{
+    return fname + " " + lname
+}
+print(getFullName1("Ram", lname: "Thapa"))
+
+func getFullName2(fname: String, mtrlkmn lname: String) ->String{
+    return fname + " " + lname
+}
+print(getFullName2(fname: "Subham", mtrlkmn: "Adhikari"))
+
+// Nested function
+
+func returnTen()->Int{
+    var y: Int = 5
+    func addFive(){
+         y += 5
+    }
+    addFive()
+    return y
+}
+print("\(returnTen())")
+
+// Enum
+enum CollegeDetail{
+    case id
+    case studentName
+    case collegeName
+    
+    func description() -> String{
+        switch self{
+        case .id:
+            return "My id"
+        case .studentName:
+            return "My name is Krishna"
+        case .collegeName:
+            return "My College is Kea"
+        }
+    }
+}
+let id = CollegeDetail.id.description()
+print(id)
+let name = CollegeDetail.studentName.description()
+print(name)
+let college = CollegeDetail.collegeName.description()
+print(college)
+
+// Enum straight forward(declarative)
+enum PersonalDetails:String{
+    case name = "Krishna"
+    case fathersName = "Shiva"
+    case age = "Thirty Eight"
+}
+print(PersonalDetails.name.rawValue)
+print(PersonalDetails.name)
+
+
+//MARK:----------------------------------- Task of the day ----------------------- write a fuction which returns different datatypes----------
+
+
+let names:[String] = ["Krishna","Ram","Shyam","Hari"]
+let ages: [Int] = [38,23,34,22]
+func getDetails(index :Int)->(name: String, age: Int, isMarried: Bool){
+var name2 = ""
+var age = 0
+var ismarried = false
+    name2 = names[index]
+    age = ages[index]
+    if(age>30){
+        ismarried = true
+    }else{
+        ismarried = false
+    }
+    
+    
+    
+    return(name2,age,ismarried)
+}
+print(getDetails(index:2))
+
